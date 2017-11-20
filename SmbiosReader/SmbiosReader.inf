@@ -1,0 +1,53 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SmbiosReader
+  MODULE_UNI_FILE                = SmbiosReader.uni
+  FILE_GUID                      = dd247d69-463c-4c39-8174-212e028ab588
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = UefiMain
+
+#
+#  This flag specifies whether HII resource section is generated into PE image.
+#
+#  UEFI_HII_RESOURCE_SECTION      = TRUE
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+#
+
+[Sources]
+SmbiosReader.c
+SmbiosReader.h
+SmbiosReaderStrings.uni
+
+[Packages]
+  MdePkg/MdePkg.dec
+  ShellPkg/ShellPkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+
+
+
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiLib
+  PcdLib
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  IoLib
+  HiiLib
+  ShellLib
+  
+[Guids]
+gEfiSmbiosTableGuid 
+gEfiSmbios3TableGuid
+  
+[Protocols]
+
+
+[BuildOptions]
+MSFT:*_*_*_CC_FLAGS = /WX-
+
