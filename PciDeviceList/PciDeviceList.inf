@@ -1,0 +1,34 @@
+## @file main.inf
+[Defines]
+  INF_VERSION                    = 0x00010006
+  BASE_NAME                      = PciDeviceList
+  FILE_GUID                        = b0e18e10-a20c-4957-8eae-a1becee16a41
+  MODULE_TYPE                   = UEFI_APPLICATION
+  VERSION_STRING               = 0.1
+  ENTRY_POINT                    = ShellCEntryLib 
+
+[Sources]
+  main.c
+  PciCommon.h
+  PciDeviceListByProtocol.c
+  PciDeviceListByProtocol.h
+[Packages]
+  MdePkg/MdePkg.dec
+  ShellPkg/ShellPkg.dec
+
+[LibraryClasses]   
+  UefiBootServicesTableLib
+  ShellCEntryLib
+  UefiLib
+  PciSegmentLib
+  PciCf8Lib
+  PciLib
+
+[Protocols]
+  gEfiPciRootBridgeIoProtocolGuid
+  gEfiPciIoProtocolGuid
+  
+
+[BuildOptions]
+  MSFT:*_*_*_CC_FLAGS  = /WX-
+
